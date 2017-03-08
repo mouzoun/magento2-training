@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_UiForm
+ * @author    Webkul
+ * @copyright Copyright (c) 2010-2016 Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Webkul_UiForm::uiform" title="Ui Form" module="Webkul_UiForm" sortOrder="10" resource="Webkul_UiForm::uiform"/>
+        <add id="Webkul_UiForm::details" title="View Details" module="Webkul_UiForm" sortOrder="1" parent="Webkul_UiForm::uiform" action="uiform/employee/index" resource="Webkul_UiForm::details"/>
+    </menu>
+</config>
