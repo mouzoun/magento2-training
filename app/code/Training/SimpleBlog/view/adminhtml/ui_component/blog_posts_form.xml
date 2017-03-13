@@ -12,12 +12,12 @@
         </item>
         <item name="template" xsi:type="string">templates/form/collapsible</item>
 
-<!--        <item name="buttons" xsi:type="array">
+        <item name="buttons" xsi:type="array">
             <item name="back" xsi:type="string">Training\SimpleBlog\Block\Adminhtml\Post\Edit\BackButton</item>
             <item name="delete" xsi:type="string">Training\SimpleBlog\Block\Adminhtml\Post\Edit\DeleteButton</item>
             <item name="reset" xsi:type="string">Training\SimpleBlog\Block\Adminhtml\Post\Edit\ResetButton</item>
             <item name="save" xsi:type="string">Training\SimpleBlog\Block\Adminhtml\Post\Edit\SaveButton</item>
-        </item>-->
+        </item>
     </argument>
 
     <dataSource name="posts_form_data_source">
@@ -38,55 +38,71 @@
             </item>
         </argument>
     </dataSource>
-    <fieldset name="employee_details">
+    <fieldset name="posts_form_details">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
                 <item name="collapsible" xsi:type="boolean">false</item>
-                <item name="label" xsi:type="string" translate="true">Employee Details</item>
+                <item name="label" xsi:type="string" translate="true">Create New Post</item>
                 <item name="sortOrder" xsi:type="number">20</item>
             </item>
         </argument>
-        <field name="employee_id">
+        <field name="post_id">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Employee Id</item>
-                    <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">employee</item>
-                    <item name="dataScope" xsi:type="string">employee_id</item>
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="formElement" xsi:type="string">hidden</item>
+                    <item name="source" xsi:type="string">post</item>
+                    <item name="dataScope" xsi:type="string">post_id</item>
                 </item>
             </argument>
         </field>
-        <field name="employee_name">
+        <field name="date">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Post Date</item>
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Employee Name</item>
-                    <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">employee</item>
-                    <item name="dataScope" xsi:type="string">employee_name</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="source" xsi:type="string">post</item>                    
+                    <item name="dataScope" xsi:type="string">post_date</item>
                 </item>
             </argument>
         </field>
-        <field name="employee_salary">
+        <field name="title">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Employee Salary</item>
+                    <item name="label" xsi:type="string" translate="true">Post Title</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">employee</item>
-                    <item name="dataScope" xsi:type="string">employee_salary</item>
+                    <item name="source" xsi:type="string">post</item>
+                    <item name="dataScope" xsi:type="string">post_title</item>
                 </item>
             </argument>
         </field>
-        <field name="employee_address">
+        <field name="description">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">Employee Address</item>
+                    <item name="label" xsi:type="string" translate="true">Post Description</item>
                     <item name="formElement" xsi:type="string">textarea</item>
-                    <item name="source" xsi:type="string">employee</item>
-                    <item name="dataScope" xsi:type="string">employee_address</item>
+                    <item name="source" xsi:type="string">post</item>
+                    <item name="dataScope" xsi:type="string">post_description</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="content">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string"/>
+                    <item name="formElement" xsi:type="string">wysiwyg</item>
+                    <item name="source" xsi:type="string">post</item>
+                    <item name="wysiwyg" xsi:type="boolean">true</item>
+                    <item name="dataScope" xsi:type="string">post_content</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
                 </item>
             </argument>
         </field>

@@ -2,15 +2,10 @@
 
 namespace Training\SimpleBlog\Controller\Adminhtml\Posts;
 
-use Magento\Backend\App\Action\Context;
-use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\View\Result\PageFactory;
+use Magento\Framework\Registry;
 use Magento\Framework\Controller\ResultFactory;
-use Magento\Framework\Controller\ResultInterface;
-use Magento\Framework\Exception\NotFoundException;
 use Magento\Backend\App\Action;
-use Training\SimpleBlog\Api\Data\PostInterfaceFactory;
-use Training\SimpleBlog\Api\PostRepositoryInterface;
-use Training\SimpleBlog\Controller\Post\Builder;
 
 /**
  * Class Edit
@@ -25,7 +20,7 @@ class Edit extends Action
      *
      * @var \Magento\Framework\Registry
      */
-    protected $_coreRegistry = null;
+    protected $oreRegistry = null;
 
     /**
      * @var \Magento\Framework\View\Result\PageFactory
@@ -39,11 +34,11 @@ class Edit extends Action
      */
     public function __construct(
         Action\Context $context,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-        \Magento\Framework\Registry $registry
+        PageFactory $resultPageFactory,
+        Registry $registry
     ) {
         $this->resultPageFactory = $resultPageFactory;
-        $this->_coreRegistry = $registry;
+        $this->coreRegistry = $registry;
         parent::__construct($context);
     }
 
@@ -57,7 +52,7 @@ class Edit extends Action
         // load layout, set active menu and breadcrumbs
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->setActiveMenu('Ashsmith_blog::post')
+        $resultPage->setActiveMenu('Training_SimpleBlog::posts')
             ->addBreadcrumb(__('Blog'), __('Blog'))
             ->addBreadcrumb(__('Manage Blog Posts'), __('Manage Blog Posts'));
         return $resultPage;
@@ -72,7 +67,7 @@ class Edit extends Action
     public function execute()
     {
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-        $resultPage->getConfig()->getTitle()->prepend(__('Employee Information'));
+        $resultPage->getConfig()->getTitle()->prepend(__('New Post'));
         return $resultPage;
     }
 }
