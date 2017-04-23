@@ -52,7 +52,7 @@ class PostsActions extends Column
             foreach ($dataSource['data']['items'] as &$item) {
                 $item[$this->getData('name')]['edit'] = [
                     'href' => $this->urlBuilder->getUrl(
-                        'blog/post/edit',
+                        'blog/posts/edit',
                         ['post_id' => $item['post_id']]
                     ),
                     'label' => __('Edit'),
@@ -60,7 +60,7 @@ class PostsActions extends Column
                 ];
                 $item[$this->getData('name')]['delete'] = [
                     'href' => $this->urlBuilder->getUrl(
-                        'blog/post/delete',
+                        'blog/posts/delete',
                         ['post_id' => $item['post_id']]
                     ),
                     'label' => __('Delete'),

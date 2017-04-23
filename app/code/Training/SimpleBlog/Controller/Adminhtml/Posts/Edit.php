@@ -16,13 +16,6 @@ class Edit extends Action
 {
 
     /**
-     * Core registry
-     *
-     * @var \Magento\Framework\Registry
-     */
-    protected $oreRegistry = null;
-
-    /**
      * @var \Magento\Framework\View\Result\PageFactory
      */
     protected $resultPageFactory;
@@ -37,25 +30,8 @@ class Edit extends Action
         PageFactory $resultPageFactory,
         Registry $registry
     ) {
-        $this->resultPageFactory = $resultPageFactory;
-        $this->coreRegistry = $registry;
+        $this->resultPageFactory = $resultPageFactory;        
         parent::__construct($context);
-    }
-
-    /**
-     * Init actions
-     *
-     * @return \Magento\Backend\Model\View\Result\Page
-     */
-    protected function _initAction()
-    {
-        // load layout, set active menu and breadcrumbs
-        /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
-        $resultPage = $this->resultPageFactory->create();
-        $resultPage->setActiveMenu('Training_SimpleBlog::posts')
-            ->addBreadcrumb(__('Blog'), __('Blog'))
-            ->addBreadcrumb(__('Manage Blog Posts'), __('Manage Blog Posts'));
-        return $resultPage;
     }
 
     /**
@@ -67,7 +43,7 @@ class Edit extends Action
     public function execute()
     {
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-        $resultPage->getConfig()->getTitle()->prepend(__('New Post'));
+        $resultPage->getConfig()->getTitle()->prepend(__('Nesw Post'));
         return $resultPage;
     }
 }

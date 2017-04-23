@@ -5,7 +5,6 @@ use Magento\Framework\App\Request\DataPersistorInterface;
 use Magento\Framework\Registry;
 use Magento\Ui\DataProvider\AbstractDataProvider;
 use Training\SimpleBlog\Model\ResourceModel\Post\CollectionFactory;
-use Training\SimpleBlog\Controller\RegistryConstants;
 
 class DataProvider extends AbstractDataProvider
 {
@@ -39,16 +38,13 @@ class DataProvider extends AbstractDataProvider
         $name,
         $primaryFieldName,
         $requestFieldName,
-        CollectionFactory $postCollectionFactory,
-        DataPersistorInterface $dataPersistor,        
+        CollectionFactory $postCollectionFactory,        
         Registry $registry,
         array $meta = [],
         array $data = []
     ) {
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
-        $this->collection = $postCollectionFactory->create();
-        $this->dataPersistor = $dataPersistor;
-        $this->registry = $registry;
+        $this->collection = $postCollectionFactory->create();        
     }
 
     public function getData()
@@ -62,8 +58,9 @@ class DataProvider extends AbstractDataProvider
         $this->loadedData = array();
         /** @var Customer $customer */
         foreach ($items as $post) {
+           
             // notre fieldset s'apelle "post" d'ou ce tableau pour que magento puisse retrouver ses datas :
-            $this->loadedData[$post->getId()]['post'] = $post->getData();
+            $this->loadedData[$post->getId()] = $post->getData();
         }
 
 
